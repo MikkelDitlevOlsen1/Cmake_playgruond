@@ -70,7 +70,7 @@ void startPWMSignal() {
 
 int main() {
     // Initialize pigpio
-    int sleptime=10000000;
+    int sleptime=1000000;
     std::cout << "Initializing pigpio" << std::endl;
     if (gpioInitialise() < 0) {
         std::cerr << "pigpio initialization failed!" << std::endl;
