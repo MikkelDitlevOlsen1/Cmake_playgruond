@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add the executable
-add_executable(ev_sim ev_sim.cpp)
+add_executable(main ev_sim.cpp)
 
 # Link the pigpio library to the executable
-target_link_libraries(ev_sim pigpio rt)
+target_link_libraries(main pigpio rt)
