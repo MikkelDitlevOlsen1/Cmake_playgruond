@@ -21,33 +21,40 @@ void initializePins() {
 }
 
 void stopCharging() {
+
     gpioWrite(RELAY_PIN_1, 0);
     gpioWrite(RELAY_PIN_2, 0);
+    std::cout << "Setting "<< RELAY_PIN_1,RELAY_PIN_2 <<" pins to 0" << std::endl;
     usleep(100000); // short sleep
-
     gpioWrite(CP_COMM_PIN, 1);
+    std::cout << "Setting "<< CP_COMM_PIN<<" pins to 1" << std::endl;
     usleep(100000); // short sleep
-
     gpioWrite(SIM_PIN_1, 1);
+    std::cout << "Setting "<< SIM_PIN_1<<" pins to 1" << std::endl;
     usleep(100000); // short sleep
     gpioWrite(SIM_PIN_2, 1);
+    std::cout << "Setting "<< SIM_PIN_2<<" pins to 1" << std::endl;
 }
 
 void startCharging() {
     gpioWrite(SIM_PIN_1, 0);
+    std::cout << "Setting " << SIM_PIN_1 << " pin to 0" << std::endl;
     usleep(100000); // short sleep
     gpioWrite(SIM_PIN_2, 0);
+    std::cout << "Setting " << SIM_PIN_2 << " pin to 0" << std::endl;
     usleep(100000); // short sleep
-
     gpioWrite(CP_COMM_PIN, 0);
+    std::cout << "Setting " << CP_COMM_PIN << " pin to 0" << std::endl;
     usleep(100000); // short sleep
-
     gpioWrite(RELAY_PIN_1, 1);
+    std::cout << "Setting " << RELAY_PIN_1 << " pin to 1" << std::endl;
     gpioWrite(RELAY_PIN_2, 1);
+    std::cout << "Setting " << RELAY_PIN_2 << " pin to 1" << std::endl;
 }
 
 void setPPStateNotCharging() {
     gpioWrite(PP_STATE_PIN, 0);
+    std::cout << "Setting " << PP_STATE_PIN << " pin to 0" << std::endl;
 }
 
 void startPWMSignal() {
@@ -57,6 +64,7 @@ void startPWMSignal() {
     // Set PWM duty cycle to 5% (range is 0-255, so 5% of 255 is approximately 12)
     int dutyCycle = 255 * 0.05;
     gpioPWM(PWM_PIN, dutyCycle);
+    std::cout << "Setting" << PWM_PIN << " dutecyel 5% 1000 hz" << std::endl;
 }
 
 int main() {
