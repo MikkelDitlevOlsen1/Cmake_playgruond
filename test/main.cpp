@@ -81,7 +81,6 @@ int main() {
     std::cout << "Initializing GPIO pins" << std::endl;
     initializePins();
 
-    usleep(sleptime);
     std::cout << "Setting PP state to not charging" << std::endl;
     setPPStateNotCharging();
 
