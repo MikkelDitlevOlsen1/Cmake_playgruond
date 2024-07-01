@@ -24,7 +24,8 @@ void stopCharging() {
 
     gpioWrite(RELAY_PIN_1, 0);
     gpioWrite(RELAY_PIN_2, 0);
-    std::cout << "Setting "<< RELAY_PIN_1,RELAY_PIN_2 <<" pins to 0" << std::endl;
+    std::cout << "Setting "<< RELAY_PIN_1<<" pins to 0" << std::endl;
+    std::cout << "Setting "<< RELAY_PIN_2<<" pins to 0" << std::endl;
     usleep(100000); // short sleep
     gpioWrite(CP_COMM_PIN, 1);
     std::cout << "Setting "<< CP_COMM_PIN<<" pins to 1" << std::endl;
