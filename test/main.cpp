@@ -61,25 +61,25 @@ void startPWMSignal() {
 
 int main() {
     // Initialize pigpio
-    cout << "Initializing pigpio" << endl;
+    std::cout << "Initializing pigpio" << std::endl;
     if (gpioInitialise() < 0) {
         std::cerr << "pigpio initialization failed!" << std::endl;
         return 1;
     }
 
-    cout << "Initializing GPIO pins" << endl;
+    std::cout << "Initializing GPIO pins" << std::endl;
     initializePins();
-    cout << "Setting PP state to not charging" << endl;
+    std::cout << "Setting PP state to not charging" << std::endl;
     setPPStateNotCharging();
-    cout << "Stopping charging simulation" << endl;
+    std::cout << "Stopping charging simulation" << std::endl;
     stopCharging();
-    cout << "Starting PWM signal" << endl;
+    std::cout << "Starting PWM signal" << std::endl;
     startPWMSignal();
-    cout << "Simulating delay before starting charging again" << endl;
+    std::cout << "Simulating delay before starting charging again" << std::endl;
     usleep(5000000); // sleep for 5 seconds
-    cout << "Starting charging simulation" << endl;
+    std::cout << "Starting charging simulation" << std::endl;
     startCharging();
-    cout << "Terminating pigpio" << endl;
+    std::cout << "Terminating pigpio" << std::endl;
     gpioTerminate();
     
 
