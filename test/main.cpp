@@ -1,7 +1,6 @@
 #include <pigpio.h>
 #include <iostream>
 #include <unistd.h> // for usleep
-
 // Define the pin numbers (Broadcom numbering)
 const int RELAY_PIN_1 = 12;
 const int RELAY_PIN_2 = 16;
@@ -62,31 +61,27 @@ void startPWMSignal() {
 
 int main() {
     // Initialize pigpio
+    cout << "Initializing pigpio" << endl;
     if (gpioInitialise() < 0) {
         std::cerr << "pigpio initialization failed!" << std::endl;
         return 1;
     }
 
-    // Initialize GPIO pins
+    cout << "Initializing GPIO pins" << endl;
     initializePins();
-
-    // Ensure PP state is set to not charging (always for now)
+    cout << "Setting PP state to not charging" << endl;
     setPPStateNotCharging();
-
-    // Stop charging simulation
+    cout << "Stopping charging simulation" << endl;
     stopCharging();
-
-    // Start PWM signal
+    cout << "Starting PWM signal" << endl;
     startPWMSignal();
-
-    // Simulate some delay before starting charging again
+    cout << "Simulating delay before starting charging again" << endl;
     usleep(5000000); // sleep for 5 seconds
-
-    // Start charging simulation
+    cout << "Starting charging simulation" << endl;
     startCharging();
-
-    // Terminate pigpio
+    cout << "Terminating pigpio" << endl;
     gpioTerminate();
+    
 
-    return 0;
+       return 0;
 }
