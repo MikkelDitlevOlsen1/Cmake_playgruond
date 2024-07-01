@@ -68,6 +68,15 @@ void startPWMSignal() {
     std::cout << "Setting" << PWM_PIN << " dutecyel 5% 1000 hz" << std::endl;
 }
 
+void setAllPinsToZero() {
+    gpioWrite(RELAY_PIN_1, 0);
+    gpioWrite(RELAY_PIN_2, 0);
+    gpioWrite(CP_COMM_PIN, 0);
+    gpioWrite(SIM_PIN_1, 0);
+    gpioWrite(SIM_PIN_2, 0);
+    gpioWrite(PP_STATE_PIN, 0);
+    gpioWrite(PWM_PIN, 0);
+}
 int main() {
     // Initialize pigpio
     int sleptime=1000000;
@@ -102,7 +111,10 @@ int main() {
     usleep(sleptime);
     std::cout << "Terminating pigpio" << std::endl;
 
+    setAllPinsToZero()
     gpioTerminate();
+    
+
     
 
        return 0;
