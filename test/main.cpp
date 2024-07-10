@@ -9,6 +9,7 @@ const int SIM_PIN_1 = 13;
 const int SIM_PIN_2 = 19;
 const int PP_STATE_PIN = 24;
 const int PWM_PIN = 20;
+const int CP_controle = 25
 
 void initializePins() {
     gpioSetMode(RELAY_PIN_1, PI_OUTPUT);
@@ -18,6 +19,7 @@ void initializePins() {
     gpioSetMode(SIM_PIN_2, PI_OUTPUT);
     gpioSetMode(PP_STATE_PIN, PI_OUTPUT);
     gpioSetMode(PWM_PIN, PI_OUTPUT);
+    gpioSetMode(CP_controle, PI_OUTPUT);
 }
 
 void stopCharging() {
@@ -37,6 +39,10 @@ void stopCharging() {
     std::cout << "Setting "<< SIM_PIN_2<<" pins to 1" << std::endl;
 }
 
+void cp_controle(){
+    gpioWrite(CP_controle, 0);
+    std::cout << "Setting " << CP_controle << " pin to 0" << std::endl;
+}
 void startCharging() {
     gpioWrite(SIM_PIN_1, 0);
     std::cout << "Setting " << SIM_PIN_1 << " pin to 0" << std::endl;
@@ -90,6 +96,9 @@ int main() {
     std::cout << "Initializing GPIO pins" << std::endl;
     initializePins();
 
+    usleep(sleptime);
+    CP_controle();
+    
     std::cout << "Setting PP state to not charging" << std::endl;
     setPPStateNotCharging();
 
