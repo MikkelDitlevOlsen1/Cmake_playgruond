@@ -9,7 +9,7 @@ const int SIM_PIN_1 = 13;
 const int SIM_PIN_2 = 19;
 const int PP_STATE_PIN = 24;
 const int PWM_PIN = 20;
-const int CP_controle = 25
+const int cp_con = 25;
 
 void initializePins() {
     gpioSetMode(RELAY_PIN_1, PI_OUTPUT);
@@ -19,7 +19,7 @@ void initializePins() {
     gpioSetMode(SIM_PIN_2, PI_OUTPUT);
     gpioSetMode(PP_STATE_PIN, PI_OUTPUT);
     gpioSetMode(PWM_PIN, PI_OUTPUT);
-    gpioSetMode(CP_controle, PI_OUTPUT);
+    gpioSetMode(cp_con, PI_OUTPUT);
 }
 
 void stopCharging() {
@@ -34,14 +34,14 @@ void stopCharging() {
     usleep(100000); // short sleep
     gpioWrite(SIM_PIN_1, 1);
     std::cout << "Setting "<< SIM_PIN_1<<" pins to 1" << std::endl;
-    usleep(100000); // short sleep
+    usleep(100000*200); // short sleep
     gpioWrite(SIM_PIN_2, 1);
     std::cout << "Setting "<< SIM_PIN_2<<" pins to 1" << std::endl;
 }
 
-void cp_controle(){
-    gpioWrite(CP_controle, 0);
-    std::cout << "Setting " << CP_controle << " pin to 0" << std::endl;
+void set_cp_con(){
+    gpioWrite(cp_con, 0);
+    std::cout << "Setting " << cp_con << " pin to 0" << std::endl;
 }
 void startCharging() {
     gpioWrite(SIM_PIN_1, 0);
@@ -97,7 +97,7 @@ int main() {
     initializePins();
 
     usleep(sleptime);
-    CP_controle();
+    set_cp_con();
     
     std::cout << "Setting PP state to not charging" << std::endl;
     setPPStateNotCharging();
@@ -105,7 +105,7 @@ int main() {
     usleep(sleptime);
     std::cout << "Stopping charging simulation" << std::endl;
     stopCharging();
-
+/*
     usleep(sleptime);
     std::cout << "Starting PWM signal" << std::endl;
     startPWMSignal();
@@ -116,11 +116,11 @@ int main() {
     usleep(5000000); // sleep for 5 seconds
     std::cout << "Starting charging simulation" << std::endl;
     startCharging();
-
-    usleep(sleptime);
+*/
+    usleep(sleptime*20);
     std::cout << "Terminating pigpio" << std::endl;
 
-    setAllPinsToZero()
+    setAllPinsToZero();
     gpioTerminate();
     
 
