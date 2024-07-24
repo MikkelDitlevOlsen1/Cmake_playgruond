@@ -1,0 +1,4 @@
+#!/home/g/Documents/Cmake_playgruond/test_display/env/bin/python3
+# EASY-INSTALL-SCRIPT: 'argcomplete==3.4.0','python-argcomplete-check-easy-install-script'
+__requires__ = 'argcomplete==3.4.0'
+__import__('pkg_resources').run_script('argcomplete==3.4.0', 'python-argcomplete-check-easy-install-script')
